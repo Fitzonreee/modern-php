@@ -32,11 +32,11 @@ $container['view'] = function ($container) {
 };
 
 // Render Twig template in route
-$app->get('/', function ($request, $response, $args) {
+$app->get('/', function ($request, $response) {
     return $this->view->render($response, 'index.html');
 });
 
-$app->get('/contact', function ($request, $response, $args) {
+$app->get('/contact', function ($request, $response) {
     return $this->view->render($response, 'contact.html');
 });
 
