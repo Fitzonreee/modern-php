@@ -1,0 +1,11 @@
+{
+    "name": "fitz/modern_php",
+    "description": "Building Websites with PHP - teamtreehouse.com",
+    "authors": [
+        {
+            "name": "Fitzonreee",
+            "email": "kevin.fitzhenry@createthenext.com"
+        }
+    ],
+    "require": {}
+}
