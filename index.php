@@ -1,4 +1,7 @@
 <?php
+// use \Psr\Http\Message\ServerRequestInterface as Request;
+// use \Psr\Http\Message\ResponseInterface as Response;
+
 require __DIR__ . '/vendor/autoload.php';
 date_default_timezone_set('America/Los_Angeles');
 
@@ -10,15 +13,31 @@ use Monolog\Handler\StreamHandler;
 // $log->addWarning('Oh, no!');
 
 // Create and configure Slim app
-$app = new \Slim\App;
+$app = new \Slim\App(['settings' => ['displayErrorDetails' => true]]);
 
-// Define app routes
-$app->get('/', function() use($app) {
-  $app->render('index.html');
+// Get container
+$container = $app->getContainer();
+
+// Register component on container
+$container['view'] = function ($container) {
+    $view = new \Slim\Views\Twig('templates', [
+        'cache' => false
+    ]);
+    $view->addExtension(new \Slim\Views\TwigExtension(
+        $container['router'],
+        $container['request']->getUri()
+    ));
+
+    return $view;
+};
+
+// Render Twig template in route
+$app->get('/', function ($request, $response, $args) {
+    return $this->view->render($response, 'index.html');
 });
 
-$app->get('/contact', function() use($app) {
-  $app->render('contact.html');
+$app->get('/contact', function ($request, $response, $args) {
+    return $this->view->render($response, 'contact.html');
 });
 
 // Run app
