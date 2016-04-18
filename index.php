@@ -35,11 +35,11 @@ $container['view'] = function ($container) {
 
 // Render Twig template in route
 $app->get('/', function ($request, $response) {
-    return $this->view->render($response, 'index.html');
+    return $this->view->render($response, 'about.twig');
 });
 
 $app->get('/contact', function ($request, $response) {
-    return $this->view->render($response, 'contact.html');
+    return $this->view->render($response, 'contact.twig');
 });
 
 // Run app
