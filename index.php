@@ -13,7 +13,9 @@ use Monolog\Handler\StreamHandler;
 // $log->addWarning('Oh, no!');
 
 // Create and configure Slim app
-$app = new \Slim\App(['settings' => ['displayErrorDetails' => true]]);
+$app = new \Slim\App([
+  'settings' => ['displayErrorDetails' => true],
+]);
 
 // Get container
 $container = $app->getContainer();
