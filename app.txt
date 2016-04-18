@@ -3,3 +3,4 @@
 [2016-04-17 19:27:03] name.WARNING: Foo [] []
 [2016-04-17 19:35:41] name.WARNING: Foo [] []
 [2016-04-17 19:39:39] name.WARNING: Oh nooooooo! [] []
+[2016-04-17 19:48:58] name.WARNING: Oh, no! [] []
