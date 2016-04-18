@@ -13,8 +13,12 @@ use Monolog\Handler\StreamHandler;
 $app = new \Slim\App;
 
 // Define app routes
-$app->get('/hello/{name}', function ($request, $response, $args) {
-    return $response->write("Hello " . $args['name']);
+$app->get('/', function() use($app) {
+  $app->render('index.html');
+});
+
+$app->get('/contact', function() use($app) {
+  $app->render('contact.html');
 });
 
 // Run app
