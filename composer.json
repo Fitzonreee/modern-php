@@ -7,5 +7,7 @@
             "email": "kevin.fitzhenry@createthenext.com"
         }
     ],
-    "require": {}
+    "require": {
+        "monolog/monolog": "^1.19"
+    }
 }
