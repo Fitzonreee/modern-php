@@ -40,7 +40,7 @@ $app->get('/', function ($request, $response) {
 
 $app->get('/contact', function ($request, $response) {
     return $this->view->render($response, 'contact.twig');
-});
+})->setName('contact');
 
 // Run app
 $app->run();
