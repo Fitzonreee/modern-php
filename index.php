@@ -43,7 +43,17 @@ $app->get('/contact', function ($request, $response) {
 })->setName('contact');
 
 $app->post('/process', function ($request, $response) {
-  var_dump($request->getParams());
+  // var_dump($request->getParams());
+  $name = $request->getParam('name');
+  $email = $request->getParam('email');
+  $message = $request->getParam('message');
+
+  if (!empty($name) && !empty($email) && !empty($message)) {
+    # code...
+  } else {
+    // display error message
+    return $response->withRedirect('/contact');
+  }
 });
 
 // Run app
