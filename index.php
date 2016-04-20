@@ -79,6 +79,11 @@ $app->post('/contact', function ($request, $response) {
     return $response->withRedirect('/contact');
   }
 
+  // TODO:
+  // 1. Display flash messages
+  // 2. Modify content
+  // 3. Git gulp running and modularize styles
+
 
 });
 
