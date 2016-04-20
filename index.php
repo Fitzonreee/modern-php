@@ -49,7 +49,10 @@ $app->post('/process', function ($request, $response) {
   $message = $request->getParam('message');
 
   if (!empty($name) && !empty($email) && !empty($message)) {
-    # code...
+    $cleanName = filter_var($name, FILTER_SANITIZE_STRING);
+    $cleanEmail = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $cleanMessage = filter_var($message, FILTER_SANITIZE_STRING);
+
   } else {
     // display error message
     return $response->withRedirect('/contact');
