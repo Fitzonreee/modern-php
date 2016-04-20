@@ -42,7 +42,7 @@ $app->get('/contact', function ($request, $response) {
     return $this->view->render($response, 'contact.twig');
 })->setName('contact');
 
-$app->post('/process', function ($request, $response) {
+$app->post('/contact', function ($request, $response) {
   // var_dump($request->getParams());
   $name = $request->getParam('name');
   $email = $request->getParam('email');
@@ -63,9 +63,21 @@ $app->post('/process', function ($request, $response) {
 
   $message = \Swift_Message::newInstance();
   $message->setSubject('Email about Herbert Marcuse');
-  $message->setForm(array($cleanName => $cleanEmail));
+  $message->setFrom(array($cleanEmail => $cleanName));
   $message->setTo(array('kevin.fitzhenry@createthenext.com'));
   $message->setBody($cleanMessage);
+
+  $result = $mailer->send($message);
+
+  if ($result > 0) {
+    // send a message that says Thank you -- success
+    var_dump($result);
+    return $response->withRedirect('/');
+  } else {
+    // send a message to user that message failed to send
+    // log that there was an error
+    return $response->withRedirect('/contact');
+  }
 
 
 });
