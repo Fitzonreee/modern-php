@@ -42,5 +42,9 @@ $app->get('/contact', function ($request, $response) {
     return $this->view->render($response, 'contact.twig');
 })->setName('contact');
 
+$app->post('/process', function ($request, $response) {
+  var_dump($request->getParams());
+});
+
 // Run app
 $app->run();
