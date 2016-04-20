@@ -57,6 +57,17 @@ $app->post('/process', function ($request, $response) {
     // display error message
     return $response->withRedirect('/contact');
   }
+
+  $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+  $mailer = \Swift_Mailer::newInstance($transport);
+
+  $message = \Swift_Message::newInstance();
+  $message->setSubject('Email about Herbert Marcuse');
+  $message->setForm(array($cleanName => $cleanEmail));
+  $message->setTo(array('kevin.fitzhenry@createthenext.com'));
+  $message->setBody($cleanMessage);
+
+
 });
 
 // Run app
